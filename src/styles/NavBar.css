@@ -1,0 +1,39 @@
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+}
+
+.game-haven {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  transition: scale 0.4s ease;
+}
+
+.game-haven:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+
+#game-haven-logo {
+  width: 50px;
+}
+
+.shopping-cart-button {
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  transition: scale 0.4s ease;
+}
+
+.shopping-cart-button:hover {
+  scale: 1.1;
+}
+
+#shopping-cart-icon {
+  width: 100%;
+  filter: invert(0.65);
+}
