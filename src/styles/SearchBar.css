@@ -1,0 +1,31 @@
+.search-bar {
+  width: 300px;
+  padding: 0 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(20, 20, 20);
+  border-radius: 12px;
+  height: 40px;
+  transition: width 0.2s ease;
+}
+
+.search-bar:focus-within {
+  width: 400px;
+}
+
+.search-bar > input {
+  max-width: 80%;
+  flex-grow: 1;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  font-size: 0.95rem;
+}
+
+#search-button {
+  background-color: transparent;
+  border: none;
+  filter: invert(0.65);
+}
+
