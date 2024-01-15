@@ -41,7 +41,7 @@ function SearchBar()
 
   async function search(searchValue: string) {
     setLoading(true);
-    const response = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${searchValue}&ordering=-added`);
+    const response = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${searchValue}&search_exact=true&ordering=-added`);
 
     if (!response.ok)
       throw new Error("server error");
