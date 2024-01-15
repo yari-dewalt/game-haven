@@ -1,0 +1,25 @@
+.search-bar-result {
+  width: 100%;
+  min-height: 70px;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background-color: rgb(20, 20, 20);
+}
+
+.search-bar-result:hover {
+  background-color: rgb(40, 40, 40);
+  cursor: pointer;
+}
+
+.search-bar-game-image {
+  min-width: 160px;
+  max-width: 160px;
+  height: 70px;
+}
+
+.search-bar-game-title {
+  color: white;
+  text-overflow: ellipsis;
+  margin: 0;
+}
