@@ -7,10 +7,10 @@ function NavBar()
 {
   return (
     <nav className="nav-bar">
-      <div className="game-haven">
+      <a className="game-haven" href="/">
         <img id="game-haven-logo" src={logo} alt="game haven logo"></img>
         <h2 id="game-haven-text">Game Haven</h2>
-      </div>
+      </a>
       <SearchBar/>
       <button className="shopping-cart-button">
         <img id="shopping-cart-icon" src={shoppingcart} alt="shopping cart icon"></img>
