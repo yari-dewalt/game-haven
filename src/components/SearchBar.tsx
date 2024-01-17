@@ -5,7 +5,7 @@ import searchIcon from "../assets/search.svg";
 import loadingIcon from "../assets/loading.svg";
 import SearchBarResult from "./SearchBarResult";
 
-function SearchBar()
+function SearchBar({ navigate, handleStoreData, onStorePage })
 {
   const [value, setValue] = useState('');
   const [searchData, setSearchData] = useState([]);
@@ -24,6 +24,9 @@ function SearchBar()
     const storedSearchData = sessionStorage.getItem("searchData");
     if (storedSearchData)
       setSearchData(JSON.parse(storedSearchData));
+    if (onStorePage) {
+      handleStoreData(JSON.parse(storedSearchData));
+    }
   }, []);
 
   useEffect(() => {
@@ -53,10 +56,22 @@ function SearchBar()
     sessionStorage.setItem("searchData", JSON.stringify(data.results));
   }
 
+  function handleEnterKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key == "Enter") {
+      if (searchData.length > 0) {
+        if (onStorePage)
+          handleStoreData(searchData);
+        else
+          navigate();
+      }
+    }
+  }
+
+
   return (
     <div className="search-bar">
       <div className="search-area">
-        <input type="text" placeholder="Search games..." value={value} onChange={handleChange}></input>
+        <input type="text" placeholder="Search games..." value={value} onChange={handleChange} onKeyDown={handleEnterKeyPress}></input>
         <button id="search-button">
           <img id="search-icon" src={searchIcon} alt="search icon"></img>
         </button>

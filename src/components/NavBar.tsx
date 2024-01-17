@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar";
 import logo from "../assets/logo.png";
 import shoppingcart from "../assets/shopping_cart.svg";
 
-function NavBar()
+function NavBar({ navigate, onStorePage, handleStoreData })
 {
   return (
     <nav className="nav-bar">
@@ -11,7 +11,7 @@ function NavBar()
         <img id="game-haven-logo" src={logo} alt="game haven logo"></img>
         <h2 id="game-haven-text">Game Haven</h2>
       </a>
-      <SearchBar/>
+      <SearchBar navigate={navigate} onStorePage={onStorePage} handleStoreData={handleStoreData}/>
       <button className="shopping-cart-button">
         <img id="shopping-cart-icon" src={shoppingcart} alt="shopping cart icon"></img>
       </button>
