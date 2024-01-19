@@ -9,11 +9,10 @@ import ios from "../assets/ios.svg";
 import android from "../assets/android.svg";
 import linux from "../assets/linux.svg";
 
-function GameCard({ gameInfo })
+function GameCard({ gameInfo, onClick })
 {
-
   return (
-    <div className="game-card">
+    <div id={gameInfo.id} className="game-card" onClick={onClick}>
       <img className="game-card-image" src={gameInfo.background_image}></img>
       <div className="game-card-info">
         <div className="purchase-info">
