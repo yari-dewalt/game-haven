@@ -12,8 +12,8 @@ import linux from "../assets/linux.svg";
 function GameCard({ gameInfo, onClick })
 {
   return (
-    <div id={gameInfo.id} className="game-card" onClick={onClick}>
-      <img className="game-card-image" src={gameInfo.background_image}></img>
+    <div id={gameInfo.id} className="game-card">
+      <img className="game-card-image" src={gameInfo.background_image} onClick={onClick}></img>
       <div className="game-card-info">
         <div className="purchase-info">
           <button className="add-to-cart-button">Add to cart +</button>
@@ -43,7 +43,7 @@ function GameCard({ gameInfo, onClick })
           }
           )}
         </div>
-        <h3 className="game-card-title">{gameInfo.name}</h3>
+        <h3 className="game-card-title" onClick={onClick}>{gameInfo.name}</h3>
       </div>
     </div>
   )
