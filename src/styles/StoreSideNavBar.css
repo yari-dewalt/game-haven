@@ -1,0 +1,58 @@
+.side-nav-bar {
+  position: sticky;
+  top: 0;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  color: rgb(140, 140, 140);
+  flex-shrink: 0;
+}
+
+.side-nav-bar > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-header {
+  color: white;
+  padding: 0;
+  margin-left: 1rem;
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.list-header > h2 {
+  margin: 0;
+  margin-top: 1rem;
+  border-bottom: 1px solid white;
+}
+
+.side-nav-bar > div > .list-header:hover {
+  cursor: default;
+  background-color: transparent;
+  background: none;
+}
+
+.nav-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+}
+
+.nav-bar-item:hover {
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(90deg, rgb(50, 50, 50) 0%, rgb(30, 30, 30) 100%);
+}
+
+.nav-bar-item.selected {
+  color: white;
+  background: linear-gradient(90deg, rgb(50, 50, 50) 0%, rgb(30, 30, 30) 100%);
+}
+
+.nav-bar-item > img {
+  width: 30px;
+  filter: invert(1);
+}
