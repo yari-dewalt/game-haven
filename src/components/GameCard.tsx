@@ -24,7 +24,7 @@ function GameCard({ gameInfo })
           </div>
         </div>
         <div className="game-card-platforms">
-          {gameInfo.parent_platforms.map(platform => {
+          {gameInfo.parent_platforms && gameInfo.parent_platforms.map(platform => {
             if (platform.platform.name.includes("PC"))
               return <img key={uniqid()} className="windows logo" src={windows} alt="PC" draggable={false}></img>
             else if (platform.platform.name.includes("Apple"))
