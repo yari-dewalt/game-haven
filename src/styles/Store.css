@@ -1,0 +1,32 @@
+.store {
+  display: flex;
+  gap: 2rem;
+}
+
+.store-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.loading-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 800px;
+}
+
+.header {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  padding-left: 1rem;
+}
+
+.games {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  justify-content: center;
+  gap: 1rem;
+}
