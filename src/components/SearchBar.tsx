@@ -5,7 +5,7 @@ import searchIcon from "../assets/search.svg";
 import loadingIcon from "../assets/loading.svg";
 import SearchBarResult from "./SearchBarResult";
 
-function SearchBar({ navigate, handleStoreData, onStorePage })
+function SearchBar({ navigate, handleStoreData, onStorePage, onSectionChange, handleSearched })
 {
   const [value, setValue] = useState('');
   const [searchData, setSearchData] = useState([]);
@@ -24,8 +24,9 @@ function SearchBar({ navigate, handleStoreData, onStorePage })
     const storedSearchData = sessionStorage.getItem("searchData");
     if (storedSearchData)
       setSearchData(JSON.parse(storedSearchData));
-    if (onStorePage) {
+    if (onStorePage && storedSearchData) {
       handleStoreData(JSON.parse(storedSearchData));
+      onSectionChange(`Search results for "${sessionStorage.getItem("searchInputValue")}"`);
     }
   }, []);
 
@@ -44,7 +45,7 @@ function SearchBar({ navigate, handleStoreData, onStorePage })
 
   async function search(searchValue: string) {
     setLoading(true);
-    const response = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${searchValue}&search_exact=true&ordering=-added`);
+    const response = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}&search=${searchValue}&search_exact=true&ordering=-added&exclude_additions=true`);
 
     if (!response.ok)
       throw new Error("server error");
@@ -59,10 +60,16 @@ function SearchBar({ navigate, handleStoreData, onStorePage })
   function handleEnterKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key == "Enter") {
       if (searchData.length > 0) {
-        if (onStorePage)
-          handleStoreData(searchData);
-        else
+        if (onStorePage) {
+          if (!loading) {
+            handleStoreData(searchData);
+            onSectionChange(`Search results for "${value}"`);
+          }
+        }
+        else {
+          handleSearched(true);
           navigate();
+        }
       }
     }
   }
