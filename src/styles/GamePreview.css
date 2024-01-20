@@ -1,0 +1,26 @@
+.game-preview-background {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: black;
+  z-index: 100;
+}
+
+.game-preview {
+  padding: 1rem;
+  width: 75%;
+  height: 60%;
+  background-color: rgb(50, 50, 50);
+  display: flex;
+  gap: 2rem;
+}
+
+.game-details {
+  overflow: scroll;
+}
