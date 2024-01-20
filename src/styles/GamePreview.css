@@ -1,3 +1,8 @@
+@keyframes grow {
+  from { scale: 0; }
+  to { scale: 1; }
+}
+
 .game-preview-background {
   position: fixed;
   display: flex;
@@ -19,6 +24,8 @@
   background-color: rgb(50, 50, 50);
   display: flex;
   gap: 1rem;
+  border-radius: 0.5rem;
+  animation: grow 0.2s;
 }
 
 .side-info {
@@ -41,12 +48,18 @@
   margin: 0;
 }
 
+.game-details > h2 {
+  margin: 0 0 0.5rem 0;
+}
+
 #add-to-cart-button {
   min-height: 60px;
   background-color: darkgreen;
   border: 2px solid transparent;
   border-radius: 0.5rem;
   transition: border-color 0.2s ease;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 #add-to-cart-button:hover {
