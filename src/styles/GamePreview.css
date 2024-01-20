@@ -18,9 +18,37 @@
   height: 60%;
   background-color: rgb(50, 50, 50);
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
+}
+
+.side-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .game-details {
   overflow: scroll;
+  background-color: rgb(30, 30, 30);
+  color: white;
+  padding: 1rem;
+  flex-grow: 1;
+  border-radius: 1rem;
+}
+
+.game-details > p {
+  margin: 0;
+}
+
+#add-to-cart-button {
+  min-height: 60px;
+  background-color: darkgreen;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  transition: border-color 0.2s ease;
+}
+
+#add-to-cart-button:hover {
+  border-color: white;
 }
