@@ -4,6 +4,7 @@ import "../styles/Store.css";
 import NavBar from "./NavBar";
 import StoreSideNavBar from "./StoreSideNavBar";
 import GameCard from "./GameCard.tsx";
+import GamePreview from "./GamePreview.tsx";
 import loadingIcon from "../assets/loading.svg";
 
 function Store({ searched })
@@ -11,6 +12,8 @@ function Store({ searched })
   const [storeData, setStoreData] = useState([]);
   const [currentSection, setCurrentSection] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showGamePreview, setShowGamePreview] = useState(false);
+  const [previewData, setPreviewData] = useState([]);
 
   function handleStoreData(data) {
     const updatedStoreData = data.map(gameData => {
@@ -75,9 +78,25 @@ function Store({ searched })
     return originalPrice;
   }
 
+  function previewGame(e) {
+    console.log(e.currentTarget);
+    storeData.forEach(data => {
+      if (data.id == e.currentTarget.parentElement.id) {
+        console.log(data);
+        setPreviewData(data);
+      }
+    })
+    setShowGamePreview(true);
+  }
+
+  function closeGamePreview(e) {
+    setShowGamePreview(false);
+  }
+
   return (
     <>
       <NavBar onEnter={handleStoreData} onStorePage={true} handleStoreData={handleStoreData} onSectionChange={handleSectionChange}/>
+      {showGamePreview && <GamePreview previewData={previewData} closeGamePreview={closeGamePreview}/>}
       <div className="store">
         <StoreSideNavBar handleLoading={setLoading} onApiData={handleStoreData} onSectionChange={handleSectionChange} searched={searched}/>
         <div className="store-content">
@@ -89,7 +108,7 @@ function Store({ searched })
           {!loading && 
           <div className="games">
             {storeData.map(data =>
-              <GameCard key={uniqid()} gameInfo={data}/>
+              <GameCard key={uniqid()} gameInfo={data} onClick={previewGame}/>
             )}
           </div>
           }
