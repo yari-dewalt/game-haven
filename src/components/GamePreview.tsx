@@ -33,8 +33,11 @@ function GamePreview({ previewData, closeGamePreview })
     <div className="game-preview-background" onClick={closeGamePreview}>
       <div className="game-preview" onClick={handleGamePreviewClick}>
         <ImageViewer images={previewData.short_screenshots || [""]}/>
-        <div className="game-details">
-          <p>{gameDetails.description}</p>
+        <div className="side-info">
+          <div className="game-details">
+            <p>{gameDetails.description}</p>
+          </div>
+          <button id="add-to-cart-button">Add to Cart</button>
         </div>
       </div>
     </div>
