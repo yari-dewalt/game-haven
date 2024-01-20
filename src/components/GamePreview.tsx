@@ -35,7 +35,8 @@ function GamePreview({ previewData, closeGamePreview })
         <ImageViewer images={previewData.short_screenshots || [""]}/>
         <div className="side-info">
           <div className="game-details">
-            <p>{gameDetails.description}</p>
+            <h2>Description</h2>
+            <p>{gameDetails.description_raw || "Loading description..."}</p>
           </div>
           <button id="add-to-cart-button">Add to Cart</button>
         </div>
