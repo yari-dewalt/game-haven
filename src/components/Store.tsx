@@ -5,9 +5,10 @@ import NavBar from "./NavBar";
 import StoreSideNavBar from "./StoreSideNavBar";
 import GameCard from "./GameCard.tsx";
 import GamePreview from "./GamePreview.tsx";
+import Cart from "./Cart.tsx";
 import loadingIcon from "../assets/loading.svg";
 
-function Store({ searched })
+function Store({ searched, cartInfo, showCart, handleShowCart, addToCart, deleteFromCart, clearCart })
 {
   const [storeData, setStoreData] = useState([]);
   const [currentSection, setCurrentSection] = useState("");
@@ -80,9 +81,17 @@ function Store({ searched })
 
   function previewGame(e) {
     console.log(e.currentTarget);
+    let price = "";
+    if (e.currentTarget.className == "game-card-title") {
+      price = e.currentTarget.parentElement.parentElement.children[1].children[0].children[1].children[0].textContent;
+      console.log(price);
+    } else {
+      price = e.currentTarget.parentElement.children[1].children[0].children[1].children[0].textContent;
+    }
     storeData.forEach(data => {
-      if (data.id == e.currentTarget.parentElement.id) {
+      if (data.id == e.currentTarget.parentElement.id || data.id == e.currentTarget.parentElement.parentElement.id) {
         console.log(data);
+        data.price = price;
         setPreviewData(data);
       }
     })
@@ -95,8 +104,9 @@ function Store({ searched })
 
   return (
     <>
-      <NavBar onEnter={handleStoreData} onStorePage={true} handleStoreData={handleStoreData} onSectionChange={handleSectionChange}/>
-      {showGamePreview && <GamePreview previewData={previewData} closeGamePreview={closeGamePreview}/>}
+      <NavBar onEnter={handleStoreData} onStorePage={true} handleStoreData={handleStoreData} onSectionChange={handleSectionChange} handleShowCart={handleShowCart}/>
+      {showCart && <Cart cartInfo={cartInfo} handleShowCart={handleShowCart} deleteFromCart={deleteFromCart} clearCart={clearCart}/>}
+      {showGamePreview && <GamePreview previewData={previewData} closeGamePreview={closeGamePreview} cartInfo={cartInfo} addToCart={addToCart}/>}
       <div className="store">
         <StoreSideNavBar handleLoading={setLoading} onApiData={handleStoreData} onSectionChange={handleSectionChange} searched={searched}/>
         <div className="store-content">
@@ -108,7 +118,7 @@ function Store({ searched })
           {!loading && 
           <div className="games">
             {storeData.map(data =>
-              <GameCard key={uniqid()} gameInfo={data} onClick={previewGame}/>
+              <GameCard key={uniqid()} gameInfo={data} onClick={previewGame} cartInfo={cartInfo} addToCart={addToCart}/>
             )}
           </div>
           }
