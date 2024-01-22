@@ -63,6 +63,15 @@
   color: white;
 }
 
+.already-added-button {
+  color: rgb(140, 140, 140);
+  background: none;
+  border: none;
+  height: fit-content;
+  padding: 0;
+  color: rgb(100, 200, 75);
+}
+
 .game-card-platforms {
   display: flex;
   align-items: center;
