@@ -9,14 +9,19 @@ import ios from "../assets/ios.svg";
 import android from "../assets/android.svg";
 import linux from "../assets/linux.svg";
 
-function GameCard({ gameInfo, onClick })
+function GameCard({ gameInfo, onClick, cartInfo, addToCart })
 {
+  const isGameInCart = cartInfo.some((item) => item.id == gameInfo.id);
+
   return (
     <div id={gameInfo.id} className="game-card">
       <img className="game-card-image" src={gameInfo.background_image} onClick={onClick}></img>
       <div className="game-card-info">
         <div className="purchase-info">
-          <button className="add-to-cart-button">Add to cart +</button>
+          {isGameInCart
+            ? <button className="already-added-button">✓ Added</button>
+            : <button className="add-to-cart-button" onClick={() => addToCart(gameInfo)}>Add to cart +</button>
+          }
           <div className="prices">
             {gameInfo.discount && <p className="game-card-discounted-price">{gameInfo.discountedPrice}</p>}
             <p className="game-card-price" style={gameInfo.discount ? { textDecoration: "line-through"} : {}}>{gameInfo.originalPrice}</p>
