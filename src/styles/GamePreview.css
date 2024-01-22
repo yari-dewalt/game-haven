@@ -28,7 +28,19 @@
   animation: grow 0.2s;
 }
 
+.preview-side {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.preview-side > h1 {
+  margin: 0 0 10px 0;
+}
+
 .side-info {
+  min-height: 0;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -66,4 +78,19 @@
 
 #add-to-cart-button:hover {
   border-color: white;
+}
+
+#already-in-cart-button {
+  min-height: 60px;
+  background-color: rgba(0, 100, 0, 0.5);
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  transition: border-color 0.2s ease;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#already-in-cart-button:hover {
+  cursor: default;
+  border-color: gray;
 }
