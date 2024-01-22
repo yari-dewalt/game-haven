@@ -1,0 +1,75 @@
+@keyframes slide-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0%); }
+}
+
+.cart-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 300px;
+  height: 100%;
+  background-color: rgb(30, 30, 30);
+  animation: slide-in 0.3s ease;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-games {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: scroll;
+  max-height: 80%;
+}
+
+#clear-cart-button {
+  background-color: transparent;
+  border: none;
+  color: gray;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+#clear-cart-button:hover {
+  color: white;
+}
+
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: 2rem;
+}
+
+#cart-checkout-button {
+  padding: 1rem;
+  min-height: 50px;
+  background-color: darkgreen;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  transition: border-color 0.2s ease;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#cart-checkout-button:hover {
+  border-color: white;
+}
