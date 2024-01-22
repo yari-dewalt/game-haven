@@ -1,0 +1,47 @@
+@keyframes grow {
+  from { scale: 0; }
+  to { scale: 1; }
+}
+
+.checkout-modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.checkout-modal {
+  background: white;
+  color: black;
+  padding: 3rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2rem;
+  animation: grow 0.3s ease;
+}
+
+.checkout-modal > * {
+  margin: 0;
+}
+
+.checkmark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkgreen;
+  color: white;
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  font-size: 4rem;
+}
