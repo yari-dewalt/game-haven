@@ -72,6 +72,10 @@
   color: rgb(100, 200, 75);
 }
 
+.already-added-button:hover {
+  cursor: default;
+}
+
 .game-card-platforms {
   display: flex;
   align-items: center;
