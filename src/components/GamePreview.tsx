@@ -2,7 +2,7 @@ import "../styles/GamePreview.css";
 import { useState, useEffect } from "react";
 import ImageViewer from "./ImageViewer";
 
-function GamePreview({ previewData, closeGamePreview })
+function GamePreview({ previewData, closeGamePreview, cartInfo, addToCart })
 {
   const [gameDetails, setGameDetails] = useState({});
   const [loading, setLoading] = useState(false);
@@ -29,16 +29,24 @@ function GamePreview({ previewData, closeGamePreview })
     fetchGameDetails(previewData.id);
   }, [])
 
+  const isGameInCart = cartInfo.some((item) => item.id == gameDetails.id);
+
   return (
     <div className="game-preview-background" onClick={closeGamePreview}>
       <div className="game-preview" onClick={handleGamePreviewClick}>
         <ImageViewer images={previewData.short_screenshots || [""]}/>
-        <div className="side-info">
-          <div className="game-details">
-            <h2>Description</h2>
-            <p>{gameDetails.description_raw || "Loading description..."}</p>
+        <div className="preview-side">
+          <h1>{previewData.name}</h1>
+          <div className="side-info">
+            <div className="game-details">
+              <h2>Description</h2>
+              <p>{gameDetails.description_raw || gameDetails.description || "Loading description..."}</p>
+            </div>
+            {isGameInCart
+              ? <button id="already-in-cart-button">✓ Added to Cart</button>
+              : <button id="add-to-cart-button" onClick={() => {if (gameDetails.description_raw || gameDetails.description) {addToCart(previewData)}}}>{`+ Add to Cart (${previewData.price})`}</button>
+            }
           </div>
-          <button id="add-to-cart-button">{`+ Add to Cart (${previewData.price})`}</button>
         </div>
       </div>
     </div>
