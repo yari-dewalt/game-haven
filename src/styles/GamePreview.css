@@ -46,9 +46,11 @@
 
 .game-details > p {
   margin: 0;
+  font-size: 1.2rem;
 }
 
 .game-details > h2 {
+  font-size: 1.8rem;
   margin: 0 0 0.5rem 0;
 }
 
