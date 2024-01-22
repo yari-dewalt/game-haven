@@ -38,7 +38,7 @@ function GamePreview({ previewData, closeGamePreview })
             <h2>Description</h2>
             <p>{gameDetails.description_raw || "Loading description..."}</p>
           </div>
-          <button id="add-to-cart-button">Add to Cart</button>
+          <button id="add-to-cart-button">{`+ Add to Cart (${previewData.price})`}</button>
         </div>
       </div>
     </div>
