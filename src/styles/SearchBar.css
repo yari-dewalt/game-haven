@@ -39,8 +39,8 @@
 }
 
 .search-results {
+  visibility: visible;
   position: absolute;
-  visibility: hidden;
   top: 110%;
   left: 0;
   max-height: 280px;
@@ -50,6 +50,10 @@
   overflow: scroll;
   border-radius: 12px;
   z-index: 10000;
+}
+
+.search-results.hidden {
+  visibility: hidden;
 }
 
 .search-results.loading {
