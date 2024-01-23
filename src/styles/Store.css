@@ -30,3 +30,8 @@
   justify-content: center;
   gap: 1rem;
 }
+
+.store-header {
+  display: flex;
+  flex-direction: column;
+}
