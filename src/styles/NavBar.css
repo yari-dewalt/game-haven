@@ -27,7 +27,7 @@
 .shopping-cart-button {
   background-color: transparent;
   border: none;
-  width: 40px;
+  min-width: 40px;
   transition: scale 0.4s ease;
 }
 
@@ -38,4 +38,10 @@
 #shopping-cart-icon {
   width: 100%;
   filter: invert(0.65);
+}
+
+@media screen and (max-width: 650px) {
+  #game-haven-text {
+    display: none;
+  }
 }
