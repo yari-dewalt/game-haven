@@ -112,7 +112,7 @@ function StoreSideNavBar({ handleLoading, onApiData, onSectionChange, searched }
           <h2>Top</h2>
         </div>
       <div className="nav-bar-item" onClick={fetchFeatured} ref={featuredRef}>
-        <img src={fireworksIcon} alt="featured icon"></img>
+        <img id="fireworks-icon" src={fireworksIcon} alt="featured icon"></img>
         <h3>Featured</h3>
       </div>
         <div className="nav-bar-item" onClick={fetchBestOfYear}>
