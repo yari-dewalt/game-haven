@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import uniqid from "uniqid";
 import "../styles/Store.css";
 import NavBar from "./NavBar";
@@ -8,13 +8,65 @@ import GamePreview from "./GamePreview.tsx";
 import Cart from "./Cart.tsx";
 import loadingIcon from "../assets/loading.svg";
 
-function Store({ searched, cartInfo, showCart, handleShowCart, addToCart, deleteFromCart, clearCart })
+function Store({ searched, cartInfo, showCart, handleShowCart, addToCart, deleteFromCart, clearCart, clickedSearch, handleClickedSearch })
 {
   const [storeData, setStoreData] = useState([]);
   const [currentSection, setCurrentSection] = useState("");
   const [loading, setLoading] = useState(false);
   const [showGamePreview, setShowGamePreview] = useState(false);
   const [previewData, setPreviewData] = useState([]);
+  let searchedGame = useRef(null);
+
+  useEffect(() => {
+    // Create a MutationObserver
+    const observer = new MutationObserver(() => {
+      const foundElements = findElementsByText(clickedSearch);
+      if (foundElements.length > 1) {
+        searchedGame.current = foundElements[1];
+        console.log("test", searchedGame.current);
+        if (searchedGame.current) {
+          searchedGame.current.click();
+          handleClickedSearch("");
+          // Disconnect the observer once the element is found and clicked
+          observer.disconnect();
+        }
+      }
+    });
+
+    // Observe changes to the DOM
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    searchedGame.current = findElementsByText(clickedSearch)[1];
+    if (searchedGame.current) {
+      searchedGame.current.click();
+      handleClickedSearch("");
+    }
+
+    return () => {
+      // Disconnect the observer when the component unmounts
+      observer.disconnect();
+    };
+  }, [clickedSearch]);
+
+  function findElementsByText(text: string) {
+    let all = document.getElementsByTagName("*");
+    let elements: Element[] = [];
+    for (let i = 0; i < all.length; i++) {
+      if (all[i].innerHTML == text) {
+        elements.push(all[i]);
+      }
+    }
+
+    return elements;
+  }
+
+  useEffect(() => {
+    if (searched) {
+      searchedGame.current = findElementsByText(clickedSearch)[1];
+      if (searchedGame.current)
+        searchedGame.current.click();
+    }
+  }, [searched]);
 
   function handleStoreData(data) {
     const updatedStoreData = data.map(gameData => {
@@ -104,7 +156,7 @@ function Store({ searched, cartInfo, showCart, handleShowCart, addToCart, delete
 
   return (
     <>
-      <NavBar onEnter={handleStoreData} onStorePage={true} handleStoreData={handleStoreData} onSectionChange={handleSectionChange} handleShowCart={handleShowCart}/>
+      <NavBar onEnter={handleStoreData} onStorePage={true} handleStoreData={handleStoreData} onSectionChange={handleSectionChange} handleShowCart={handleShowCart} handleClickedSearch={handleClickedSearch}/>
       {showCart && <Cart cartInfo={cartInfo} handleShowCart={handleShowCart} deleteFromCart={deleteFromCart} clearCart={clearCart}/>}
       {showGamePreview && <GamePreview previewData={previewData} closeGamePreview={closeGamePreview} cartInfo={cartInfo} addToCart={addToCart}/>}
       <div className="store">
