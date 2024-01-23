@@ -14,6 +14,23 @@ function SearchBar({ navigate, handleStoreData, onStorePage, onSectionChange, ha
   const initialLoad = useRef(false);
   const API_KEY = "abd1d4cf1d5944b3903754265695d018";
 
+  useEffect(() => {
+      const handleClickOutside = (event) => {
+        const searchArea = document.querySelector('.search-area');
+        const searchResults = document.querySelector('.search-results');
+
+        if (searchArea && !searchArea.contains(event.target) && searchResults && !searchResults.contains(event.target)) {
+          setShowSearchResults(false);
+        }
+      };
+
+      document.addEventListener("click", handleClickOutside);
+
+      return () => {
+        document.removeEventListener("click", handleClickOutside);
+      };
+    }, []);
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setValue(e.target.value);
     sessionStorage.setItem("searchInputValue", e.target.value);
@@ -75,6 +92,19 @@ function SearchBar({ navigate, handleStoreData, onStorePage, onSectionChange, ha
     }
   }
 
+  function handleSearchIconPress() {
+    if (onStorePage) {
+      if (!loading) {
+        handleStoreData(searchData);
+        onSectionChange(`Search results for "${value}"`);
+      }
+    }
+    else {
+      handleSearched(true);
+      navigate();
+    }
+  }
+
   function handleResultClick(e) {
     console.log(e.currentTarget.outerText);
     if (e.currentTarget.outerText != "")
@@ -93,10 +123,10 @@ function SearchBar({ navigate, handleStoreData, onStorePage, onSectionChange, ha
   }
 
   return (
-    <div className="search-bar">
-      <div className="search-area" onClick={() => setShowSearchResults(true)}>
+    <div className="search-bar" onClick={() => setShowSearchResults(true)}>
+      <div className="search-area">
         <input type="text" placeholder="Search games..." value={value} onChange={handleChange} onKeyDown={handleEnterKeyPress}></input>
-        <button id="search-button">
+        <button id="search-button" onClick={handleSearchIconPress}>
           <img id="search-icon" src={searchIcon} alt="search icon"></img>
         </button>
       </div>
