@@ -7,6 +7,7 @@ import ErrorPage from "./ErrorPage";
 function Router()
 {
   const [searched, setSearched] = useState(false);
+  const [clickedSearch, setClickedSearch] = useState(null);
   const [cartInfo, setCartInfo] = useState([]);
   const [showCart, setShowCart] = useState(false);
 
@@ -19,6 +20,10 @@ function Router()
 
   function handleSearched(value) {
     setSearched(value);
+  }
+
+  function handleClickedSearch(value) {
+    setClickedSearch(value);
   }
 
   function handleShowCart(value) {
@@ -46,12 +51,30 @@ function Router()
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <App handleSearched={handleSearched} cartInfo={cartInfo} showCart={showCart} handleShowCart={handleShowCart} deleteFromCart={deleteFromCart} clearCart={clearCart}/>,
+      element: <App
+                handleSearched={handleSearched}
+                cartInfo={cartInfo}
+                showCart={showCart}
+                handleShowCart={handleShowCart}
+                deleteFromCart={deleteFromCart}
+                clearCart={clearCart}
+                handleClickedSearch={handleClickedSearch}
+               />,
       errorElement: <ErrorPage/>,
     },
     {
       path: "store",
-      element: <Store searched={searched} cartInfo={cartInfo} showCart={showCart} handleShowCart={handleShowCart} addToCart={addToCart} deleteFromCart={deleteFromCart} clearCart={clearCart}/>,
+      element: <Store
+                searched={searched}
+                cartInfo={cartInfo}
+                showCart={showCart}
+                handleShowCart={handleShowCart}
+                addToCart={addToCart}
+                deleteFromCart={deleteFromCart}
+                clearCart={clearCart}
+                handleClickedSearch={handleClickedSearch}
+                clickedSearch={clickedSearch}
+               />,
     },
   ]);
 
