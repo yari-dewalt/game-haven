@@ -24,6 +24,16 @@ function SearchBar({ navigate, handleStoreData, onStorePage, onSectionChange, ha
         }
       };
 
+      const handleClickOutside2 = (event) => {
+        const searchArea = document.querySelector('.search-area loading');
+        const searchResults = document.querySelector('.search-results');
+
+        if (searchArea && !searchArea.contains(event.target) && searchResults && !searchResults.contains(event.target)) {
+          setShowSearchResults(false);
+        }
+      };
+
+
       document.addEventListener("click", handleClickOutside);
 
       return () => {
