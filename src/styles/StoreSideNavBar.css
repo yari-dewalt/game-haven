@@ -56,3 +56,27 @@
   width: 30px;
   filter: invert(1);
 }
+
+@media screen and (max-width: 550px) {
+  .nav-bar-item > h3 {
+    display: none;
+  }
+
+  .list-header {
+    display: none;
+  }
+
+  .side-nav-bar {
+    padding-top: 1rem;
+    width: 10px;
+  }
+
+  .nav-bar-item > img {
+    min-width: 30px;
+    margin: 0.5rem 0;
+  }
+
+  #fireworks-icon {
+    width: 30px;
+  }
+}

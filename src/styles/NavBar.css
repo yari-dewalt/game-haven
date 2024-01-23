@@ -12,6 +12,7 @@
   align-items: center;
   gap: 0.5rem;
   transition: scale 0.4s ease;
+  flex-shrink: 0;
 }
 
 .game-haven:hover {
@@ -40,8 +41,14 @@
   filter: invert(0.65);
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 550px) {
   #game-haven-text {
     display: none;
+  }
+
+  .nav-bar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    gap: 1rem;
   }
 }

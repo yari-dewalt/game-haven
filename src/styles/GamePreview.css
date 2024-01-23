@@ -94,3 +94,25 @@
   cursor: default;
   border-color: gray;
 }
+
+@media screen and (max-width: 550px) {
+  .game-preview {
+    flex-direction: column;
+  }
+
+  .preview-side {
+    max-height: 70%;
+  }
+
+  .preview-side > h1 {
+    font-size: 1.5rem;
+  }
+
+  .game-details > h2 {
+    font-size: 1.2rem;
+  }
+
+  .game-details > p {
+    font-size: 0.9rem;
+  }
+}

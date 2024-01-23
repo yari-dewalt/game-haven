@@ -24,3 +24,14 @@
   margin: 0;
   padding: 0 1rem;
 }
+
+@media screen and (max-width: 550px) {
+  .search-bar-game-image {
+    min-width: 120px;
+    max-width: 120px;
+  }
+
+  .search-bar-game-title {
+    font-size: 1rem;
+  }
+}

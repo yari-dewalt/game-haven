@@ -51,3 +51,12 @@
   right: 0;
 }
 
+@media screen and (max-width: 550px) {
+  .image-viewer {
+    min-width: 100%;
+  }
+
+  .image-viewer-button {
+    opacity: 1;
+  }
+}
