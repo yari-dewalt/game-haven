@@ -3,9 +3,10 @@ import uniqid from "uniqid";
 import "../styles/Store.css";
 import NavBar from "./NavBar";
 import StoreSideNavBar from "./StoreSideNavBar";
-import GameCard from "./GameCard.tsx";
-import GamePreview from "./GamePreview.tsx";
-import Cart from "./Cart.tsx";
+import GameCard from "./GameCard";
+import GamePreview from "./GamePreview";
+import Cart from "./Cart";
+import SortBy from "./SortBy";
 import loadingIcon from "../assets/loading.svg";
 
 function Store({ searched, cartInfo, showCart, handleShowCart, addToCart, deleteFromCart, clearCart, clickedSearch, handleClickedSearch })
@@ -87,6 +88,10 @@ function Store({ searched, cartInfo, showCart, handleShowCart, addToCart, delete
     setCurrentSection(section);
   }
 
+  function setSortedStoreData(data) {
+    setStoreData(data);
+  }
+
   function generatePrice() {
     let choice: number = Math.floor(Math.random() * 3);
     let price: string = "";
@@ -163,8 +168,9 @@ function Store({ searched, cartInfo, showCart, handleShowCart, addToCart, delete
         <StoreSideNavBar handleLoading={setLoading} onApiData={handleStoreData} onSectionChange={handleSectionChange} searched={searched}/>
         <div className="store-content">
           {!loading && 
-          <div>
+          <div className="store-header">
             <h1 id="header-text" className="header">{currentSection}</h1>
+            <SortBy storeData={storeData} setSortedStoreData={setSortedStoreData}/>
           </div>
           }
           {!loading && 
