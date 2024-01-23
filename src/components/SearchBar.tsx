@@ -5,11 +5,12 @@ import searchIcon from "../assets/search.svg";
 import loadingIcon from "../assets/loading.svg";
 import SearchBarResult from "./SearchBarResult";
 
-function SearchBar({ navigate, handleStoreData, onStorePage, onSectionChange, handleSearched })
+function SearchBar({ navigate, handleStoreData, onStorePage, onSectionChange, handleSearched, handleClickedSearch })
 {
   const [value, setValue] = useState('');
   const [searchData, setSearchData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showSearchResults, setShowSearchResults] = useState(false);
   const initialLoad = useRef(false);
   const API_KEY = "abd1d4cf1d5944b3903754265695d018";
 
@@ -74,18 +75,34 @@ function SearchBar({ navigate, handleStoreData, onStorePage, onSectionChange, ha
     }
   }
 
+  function handleResultClick(e) {
+    console.log(e.currentTarget.outerText);
+    if (e.currentTarget.outerText != "")
+      handleClickedSearch(e.currentTarget.outerText);
+    if (onStorePage) {
+      handleStoreData(searchData);
+      onSectionChange(`Search results for "${value}"`);
+    }
+
+    else {
+      handleSearched(true);
+      navigate();
+    }
+
+    setShowSearchResults(false);
+  }
 
   return (
     <div className="search-bar">
-      <div className="search-area">
+      <div className="search-area" onClick={() => setShowSearchResults(true)}>
         <input type="text" placeholder="Search games..." value={value} onChange={handleChange} onKeyDown={handleEnterKeyPress}></input>
         <button id="search-button">
           <img id="search-icon" src={searchIcon} alt="search icon"></img>
         </button>
       </div>
-      <div className="search-results">
+      <div className={`search-results ${showSearchResults ? '' : "hidden"}`}>
         {!loading && searchData.map(data =>
-          <SearchBarResult key={uniqid()} gameTitle={data.name} gameImage={data.background_image}/>
+          <SearchBarResult key={uniqid()} gameTitle={data.name} gameImage={data.background_image} onClick={handleResultClick}/>
         )}
       </div>
       {loading && <div className="search-results loading">
