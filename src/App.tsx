@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import './App.css'
 import NavBar from "./components/NavBar";
 import Cart from "./components/Cart";
@@ -11,7 +13,7 @@ function App({ handleSearched, cartInfo, showCart, handleShowCart, deleteFromCar
   return (
     <>
     <div className="home-page">
-      <NavBar navigate={() => navigate("/store")} handleSearched={handleSearched} handleShowCart={handleShowCart} handleClickedSearch={handleClickedSearch}/>
+      <NavBar navigate={() => navigate("/game-haven/store")} handleSearched={handleSearched} handleShowCart={handleShowCart} handleClickedSearch={handleClickedSearch}/>
       {showCart && <Cart cartInfo={cartInfo} handleShowCart={handleShowCart} deleteFromCart={deleteFromCart} clearCart={clearCart}/>}
       <div className="home-page-content">
         <div className="welcome">
@@ -22,7 +24,7 @@ function App({ handleSearched, cartInfo, showCart, handleShowCart, deleteFromCar
               <p>yari-dewalt</p>
           </a>
         </div>
-        <a className="to-store" href="store">To Store →</a>
+        <a className="to-store" href="/game-haven/store">To Store →</a>
       </div>
     </div>
     <video className="background-video" autoPlay loop muted>

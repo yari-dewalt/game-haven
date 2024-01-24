@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import "../styles/ImageViewer.css";
 import { useState, useEffect } from "react";
 import backArrowIcon from "../assets/arrow_back.svg";

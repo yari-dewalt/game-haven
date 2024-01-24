@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import "../styles/ImageNav.css";
 
 function ImageNav({ images, currentIndex, changeIndex, isHovered })

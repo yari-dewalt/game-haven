@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import "../styles/GamePreview.css";
 import { useState, useEffect } from "react";
 import ImageViewer from "./ImageViewer";

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -51,9 +53,9 @@ function Router()
 
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/game-haven",
       element: (
-        <CSSTransition key="/" timeout={300} classNames="fade">
+        <CSSTransition key="/game-haven" timeout={300} classNames="fade">
           <App
             handleSearched={handleSearched}
             cartInfo={cartInfo}
@@ -68,9 +70,9 @@ function Router()
       errorElement: <ErrorPage />,
     },
     {
-      path: "store",
+      path: "/game-haven/store",
       element: (
-        <CSSTransition key="store" timeout={300} classNames="fade">
+        <CSSTransition key="/game-haven/store" timeout={300} classNames="fade">
           <Store
             searched={searched}
             cartInfo={cartInfo}

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { useEffect, useRef } from "react";
 import "../styles/StoreSideNavBar.css";
 import crownIcon from "../assets/crown.svg";

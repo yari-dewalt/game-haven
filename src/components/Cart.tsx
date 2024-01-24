@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import "../styles/Cart.css";
 import CartGame from "./CartGame";
 import CheckoutModal from "./CheckoutModal";

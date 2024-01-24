@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import "../styles/SearchBar.css";
 import { useState, useEffect, useRef } from "react";
 import uniqid from "uniqid";

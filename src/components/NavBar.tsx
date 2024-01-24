@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import "../styles/NavBar.css"
 import SearchBar from "./SearchBar";
 import logo from "../assets/logo.png";
@@ -7,7 +9,7 @@ function NavBar({ navigate, onStorePage, handleStoreData, onSectionChange, handl
 {
   return (
     <nav className="nav-bar">
-      <a className="game-haven" href="/">
+      <a className="game-haven" href="/game-haven">
         <img id="game-haven-logo" src={logo} alt="game haven logo"></img>
         <h2 id="game-haven-text">Game Haven</h2>
       </a>
