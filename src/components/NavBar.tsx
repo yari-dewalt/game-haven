@@ -9,7 +9,7 @@ function NavBar({ navigate, onStorePage, handleStoreData, onSectionChange, handl
 {
   return (
     <nav className="nav-bar">
-      <a className="game-haven" href="/game-haven">
+      <a className="game-haven" href="/">
         <img id="game-haven-logo" src={logo} alt="game haven logo"></img>
         <h2 id="game-haven-text">Game Haven</h2>
       </a>

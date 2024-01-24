@@ -53,9 +53,9 @@ function Router()
 
   const router = createBrowserRouter([
     {
-      path: "/game-haven",
+      path: "/",
       element: (
-        <CSSTransition key="/game-haven" timeout={300} classNames="fade">
+        <CSSTransition key="/" timeout={300} classNames="fade">
           <App
             handleSearched={handleSearched}
             cartInfo={cartInfo}
@@ -70,9 +70,9 @@ function Router()
       errorElement: <ErrorPage />,
     },
     {
-      path: "/game-haven/store",
+      path: "/store",
       element: (
-        <CSSTransition key="/game-haven/store" timeout={300} classNames="fade">
+        <CSSTransition key="/store" timeout={300} classNames="fade">
           <Store
             searched={searched}
             cartInfo={cartInfo}
