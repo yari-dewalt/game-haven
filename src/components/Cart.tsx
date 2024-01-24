@@ -49,7 +49,7 @@ function Cart({ cartInfo, handleShowCart, deleteFromCart, clearCart })
             </div>
             <div className="cart-games">
               {cartInfo.map(game =>
-                <CartGame gameInfo={game} deleteFromCart={deleteFromCart}/>
+                <CartGame key={game.id} gameInfo={game} deleteFromCart={deleteFromCart}/>
               )}
             </div>
             <div className="cart-footer">
