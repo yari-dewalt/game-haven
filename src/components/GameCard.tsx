@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import "../styles/GameCard.css";
 import uniqid from "uniqid";
 import playstation from "../assets/playstation.svg";

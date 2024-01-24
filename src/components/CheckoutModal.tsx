@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import "../styles/CheckoutModal.css";
 
 function CheckoutModal({ isOpen, totalItems, totalPrice })

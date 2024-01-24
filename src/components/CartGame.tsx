@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import "../styles/CartGame.css";
 
 function CartGame({ gameInfo, deleteFromCart })

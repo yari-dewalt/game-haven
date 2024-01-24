@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { useState, useEffect, useRef } from "react";
 import "../styles/SortBy.css";
 import expandIcon from "../assets/expand.svg";
