@@ -24,7 +24,6 @@ function Store({ searched, cartInfo, showCart, handleShowCart, addToCart, delete
       const foundElements = findElementsByText(clickedSearch);
       if (foundElements.length > 1) {
         searchedGame.current = foundElements[1];
-        console.log("test", searchedGame.current);
         if (searchedGame.current) {
           searchedGame.current.click();
           handleClickedSearch("");
@@ -137,17 +136,14 @@ function Store({ searched, cartInfo, showCart, handleShowCart, addToCart, delete
   }
 
   function previewGame(e) {
-    console.log(e.currentTarget);
     let price = "";
     if (e.currentTarget.className == "game-card-title") {
       price = e.currentTarget.parentElement.parentElement.children[1].children[0].children[1].children[0].textContent;
-      console.log(price);
     } else {
       price = e.currentTarget.parentElement.children[1].children[0].children[1].children[0].textContent;
     }
     storeData.forEach(data => {
       if (data.id == e.currentTarget.parentElement.id || data.id == e.currentTarget.parentElement.parentElement.id) {
-        console.log(data);
         data.price = price;
         setPreviewData(data);
       }

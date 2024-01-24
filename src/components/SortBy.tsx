@@ -60,7 +60,6 @@ function SortBy({ storeData, setSortedStoreData })
 
   function sortByRating() {
     const sortedStoreData = [...storeData].sort((a, b) => (a.rating > b.rating) ? -1 : ((b.rating > a.rating) ? 1 : 0))
-    console.log(sortedStoreData);
     setSortedStoreData(sortedStoreData);
     setCurrentSort("Rating");
     setShowOptions(!showOptions);

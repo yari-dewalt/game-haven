@@ -61,7 +61,6 @@ function SearchBar({ navigate, handleStoreData, onStorePage, onSectionChange, ha
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (value && initialLoad.current) {
-        console.log("searching " + value);
         search(value);
       }
       if (!value)
@@ -80,7 +79,6 @@ function SearchBar({ navigate, handleStoreData, onStorePage, onSectionChange, ha
 
     const data = await response.json();
     setLoading(false);
-    console.log(data.results);
     setSearchData(data.results);
     sessionStorage.setItem("searchData", JSON.stringify(data.results));
   }
@@ -116,7 +114,6 @@ function SearchBar({ navigate, handleStoreData, onStorePage, onSectionChange, ha
   }
 
   function handleResultClick(e) {
-    console.log(e.currentTarget.outerText);
     if (e.currentTarget.outerText != "")
       handleClickedSearch(e.currentTarget.outerText);
     if (onStorePage) {

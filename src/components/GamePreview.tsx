@@ -22,7 +22,6 @@ function GamePreview({ previewData, closeGamePreview, cartInfo, addToCart })
     const data = await response.json();
     setLoading(false);
     setGameDetails(data);
-    console.log(data);
   }
 
   useEffect(() => {

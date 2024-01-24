@@ -33,7 +33,6 @@ function Router()
   }
 
   function addToCart(game) {
-    console.log(game);
     const updatedCartInfo = [...cartInfo, game];
     setCartInfo(updatedCartInfo);
     localStorage.setItem("cart-info", JSON.stringify(updatedCartInfo));

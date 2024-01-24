@@ -41,7 +41,6 @@ function StoreSideNavBar({ handleLoading, onApiData, onSectionChange, searched }
       throw new Error("server error");
 
     const data = await response.json();
-    console.log(data.results);
     onApiData(data.results);
     onSectionChange(e.target.textContent);
     handleLoading(false);
