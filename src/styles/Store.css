@@ -1,6 +1,7 @@
 .store {
   display: flex;
   gap: 2rem;
+  background-color: rgb(30, 30, 30);
 }
 
 .store-content {
