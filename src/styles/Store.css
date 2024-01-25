@@ -37,6 +37,10 @@
   flex-direction: column;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 @media screen and (max-width: 550px) {
   #header-text {
     font-size: 20px;

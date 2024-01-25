@@ -70,6 +70,20 @@ function Store({ searched, cartInfo, showCart, handleShowCart, addToCart, delete
     }
   }, [searched]);
 
+  useEffect(() => {
+    const body = document.body;
+
+    if (showGamePreview) {
+      body.classList.add("no-scroll");
+    } else {
+      body.classList.remove("no-scroll");
+    }
+
+    return () => {
+      body.classList.remove("no-scroll");
+    };
+  }, [showGamePreview]);
+
   function handleStoreData(data) {
     const updatedStoreData = data.map(gameData => {
       let discount: boolean;
@@ -159,7 +173,7 @@ function Store({ searched, cartInfo, showCart, handleShowCart, addToCart, delete
 
   return (
     <>
-      <NavBar onEnter={handleStoreData} onStorePage={true} handleStoreData={handleStoreData} onSectionChange={handleSectionChange} handleShowCart={handleShowCart} handleClickedSearch={handleClickedSearch}/>
+      <NavBar onEnter={handleStoreData} onStorePage={true} handleStoreData={handleStoreData} onSectionChange={handleSectionChange} handleShowCart={handleShowCart} handleClickedSearch={handleClickedSearch} cartInfo={cartInfo}/>
       {showCart && <Cart cartInfo={cartInfo} handleShowCart={handleShowCart} deleteFromCart={deleteFromCart} clearCart={clearCart}/>}
       {showGamePreview && <GamePreview previewData={previewData} closeGamePreview={closeGamePreview} cartInfo={cartInfo} addToCart={addToCart}/>}
       <div className="store">

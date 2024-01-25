@@ -3,7 +3,7 @@
 import "../styles/Cart.css";
 import CartGame from "./CartGame";
 import CheckoutModal from "./CheckoutModal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Cart({ cartInfo, handleShowCart, deleteFromCart, clearCart })
 {
@@ -39,6 +39,20 @@ function Cart({ cartInfo, handleShowCart, deleteFromCart, clearCart })
     setIsModalOpen(false);
     clearCart();
   }
+
+  useEffect(() => {
+    const body = document.body;
+
+    if (isModalOpen) {
+      body.classList.add("no-scroll");
+    } else {
+      body.classList.remove("no-scroll");
+    }
+
+    return () => {
+      body.classList.remove("no-scroll");
+    };
+  }, [isModalOpen]);
 
   return (
     <>
