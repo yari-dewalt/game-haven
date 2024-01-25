@@ -13,7 +13,7 @@ function App({ handleSearched, cartInfo, showCart, handleShowCart, deleteFromCar
   return (
     <>
     <div className="home-page">
-      <NavBar navigate={() => navigate("/store")} handleSearched={handleSearched} handleShowCart={handleShowCart} handleClickedSearch={handleClickedSearch}/>
+      <NavBar navigate={() => navigate("/store")} handleSearched={handleSearched} handleShowCart={handleShowCart} handleClickedSearch={handleClickedSearch} cartInfo={cartInfo}/>
       {showCart && <Cart cartInfo={cartInfo} handleShowCart={handleShowCart} deleteFromCart={deleteFromCart} clearCart={clearCart}/>}
       <div className="home-page-content">
         <div className="welcome">
