@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 import logo from "../assets/logo.png";
 import shoppingcart from "../assets/shopping_cart.svg";
 
-function NavBar({ navigate, onStorePage, handleStoreData, onSectionChange, handleSearched, handleShowCart, handleClickedSearch })
+function NavBar({ navigate, onStorePage, handleStoreData, onSectionChange, handleSearched, handleShowCart, handleClickedSearch, cartInfo })
 {
   return (
     <nav className="nav-bar">
@@ -15,6 +15,7 @@ function NavBar({ navigate, onStorePage, handleStoreData, onSectionChange, handl
       </a>
       <SearchBar navigate={navigate} onStorePage={onStorePage} handleStoreData={handleStoreData} onSectionChange={onSectionChange} handleSearched={handleSearched} handleClickedSearch={handleClickedSearch}/>
       <button className="shopping-cart-button" onClick={() => handleShowCart(true)}>
+        {(cartInfo.length > 0) && <div id="cart-num-items">{cartInfo.length}</div>}
         <img id="shopping-cart-icon" src={shoppingcart} alt="shopping cart icon"></img>
       </button>
     </nav>

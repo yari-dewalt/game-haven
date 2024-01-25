@@ -30,6 +30,7 @@
   border: none;
   min-width: 40px;
   transition: scale 0.4s ease;
+  position: relative;
 }
 
 .shopping-cart-button:hover {
@@ -39,6 +40,18 @@
 #shopping-cart-icon {
   width: 100%;
   filter: invert(0.65);
+}
+
+#cart-num-items {
+  width: 16px;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  background-color: green;
+  color: white;
+  border-radius: 50%;
+  z-index: 1;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 550px) {
